@@ -1,4 +1,4 @@
-package com.raed.weatherapp.remote
+package com.raed.weatherapp.data.remote
 
 
 /**

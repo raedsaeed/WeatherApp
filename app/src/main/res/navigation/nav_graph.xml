@@ -6,6 +6,6 @@
 
     <fragment
         android:id="@+id/main_fragment"
-        android:name="com.raed.weatherapp.ui.MainFragment"
+        android:name="com.raed.weatherapp.ui.CityFragment"
         android:label="Main" />
 </navigation>

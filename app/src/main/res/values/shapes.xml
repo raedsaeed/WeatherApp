@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="RoundedShape24dp">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">@dimen/dp24</item>
+        <item name="cornerSizeTopRight">@dimen/dp24</item>
+    </style>
+
+</resources>
