@@ -14,4 +14,4 @@ data class City(
 
     @NonNull
     val country: String = "",
-)
+) : BaseObject()

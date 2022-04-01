@@ -1,13 +1,13 @@
 package com.raed.weatherapp.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.raed.weatherapp.R
 import com.raed.weatherapp.databinding.FragmentCitiesBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -32,11 +32,15 @@ class CityFragment : Fragment() {
             addCitiesBinding.show(childFragmentManager, tag)
         }
 
-        cityViewModel.getCities()
+        val cityAdapter = CityAdapter()
+        binding.rvFragmentCitiesList.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvFragmentCitiesList.adapter = cityAdapter
 
+        cityViewModel.getCities()
         cityViewModel.citiesLiveData.observe(viewLifecycleOwner) {
-            Log.e("TAG", "onCreateView: size  ${it?.size}")
+            cityAdapter.setItems(it.toMutableList())
         }
+
         return binding.root
     }
 }

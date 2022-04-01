@@ -7,5 +7,5 @@
     <fragment
         android:id="@+id/main_fragment"
         android:name="com.raed.weatherapp.ui.CityFragment"
-        android:label="Main" />
+        android:label="@string/cities" />
 </navigation>

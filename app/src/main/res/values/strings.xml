@@ -2,4 +2,5 @@
     <string name="app_name">WeatherApp</string>
     <string name="city_hint">London,UK</string>
     <string name="add_city">Add City</string>
+    <string name="cities">Cities</string>
 </resources>
