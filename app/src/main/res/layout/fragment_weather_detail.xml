@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ProgressBar
+            android:id="@+id/pb_fragment_weather_details_loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cv_fragment_weather_detail_card"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:cardCornerRadius="@dimen/dp8"
+            app:cardElevation="@dimen/dp8"
+            app:layout_constraintBottom_toTopOf="@id/tv_fragment_weather_message"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent=".7">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_fragment_weather_city"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp24"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                    android:textColor="?attr/colorOnSecondary"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Cairo, EG" />
+
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/iv_tv_fragment_weather_image"
+                    android:layout_width="@dimen/dp100"
+                    android:layout_height="@dimen/dp100"
+                    android:layout_margin="@dimen/dp24"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_fragment_weather_city" />
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_fragment_weather_desc_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp24"
+                    android:layout_marginTop="@dimen/dp16"
+                    android:text="@string/description"
+                    android:textColor="?attr/colorOnSecondary"
+                    android:textSize="@dimen/sp14"
+                    app:fontFamily="@font/roboto_bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/iv_tv_fragment_weather_image" />
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_fragment_weather_desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dp24"
+                    android:textColor="?attr/colorPrimary"
+                    android:textSize="@dimen/sp14"
+                    app:fontFamily="@font/roboto_bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tv_fragment_weather_desc_label"
+                    tools:text="Cloudy" />
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_fragment_weather_temp_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp8"
+                    android:text="@string/temperature"
+                    android:textColor="?attr/colorOnSecondary"
+                    android:textSize="@dimen/sp14"
+                    app:fontFamily="@font/roboto_bold"
+                    app:layout_constraintStart_toStartOf="@id/tv_fragment_weather_desc_label"
+                    app:layout_constraintTop_toBottomOf="@id/tv_fragment_weather_desc_label" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_fragment_weather_temp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="?attr/colorPrimary"
+                    android:textSize="@dimen/sp14"
+                    app:fontFamily="@font/roboto_bold"
+                    app:layout_constraintEnd_toEndOf="@id/tv_fragment_weather_desc"
+                    app:layout_constraintTop_toTopOf="@id/tv_fragment_weather_temp_label"
+                    tools:text="20 C" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_fragment_weather_hum_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp8"
+                    android:text="@string/humidity"
+                    android:textColor="?attr/colorOnSecondary"
+                    android:textSize="@dimen/sp14"
+                    app:fontFamily="@font/roboto_bold"
+                    app:layout_constraintStart_toStartOf="@id/tv_fragment_weather_temp_label"
+                    app:layout_constraintTop_toBottomOf="@id/tv_fragment_weather_temp_label" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_fragment_weather_hum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="?attr/colorPrimary"
+                    android:textSize="@dimen/sp14"
+                    app:fontFamily="@font/roboto_bold"
+                    app:layout_constraintEnd_toEndOf="@id/tv_fragment_weather_temp"
+                    app:layout_constraintTop_toTopOf="@id/tv_fragment_weather_hum_label"
+                    tools:text="45 %" />
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_fragment_weather_wind_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp8"
+                    android:layout_marginBottom="@dimen/dp16"
+                    android:text="@string/windspeed"
+                    android:textColor="?attr/colorOnSecondary"
+                    android:textSize="@dimen/sp14"
+                    app:fontFamily="@font/roboto_bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/tv_fragment_weather_hum_label"
+                    app:layout_constraintTop_toBottomOf="@id/tv_fragment_weather_hum_label" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_fragment_weather_wind"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="?attr/colorPrimary"
+                    android:textSize="@dimen/sp14"
+                    app:fontFamily="@font/roboto_bold"
+                    app:layout_constraintEnd_toEndOf="@id/tv_fragment_weather_hum"
+                    app:layout_constraintTop_toTopOf="@id/tv_fragment_weather_wind_label"
+                    tools:text="20 km/h" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_fragment_weather_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp24"
+            android:gravity="center"
+            android:textColor="?attr/colorOnSecondary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Something" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

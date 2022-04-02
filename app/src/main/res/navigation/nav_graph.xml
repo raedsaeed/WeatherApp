@@ -8,4 +8,8 @@
         android:id="@+id/main_fragment"
         android:name="com.raed.weatherapp.ui.CityFragment"
         android:label="@string/cities" />
+
+    <fragment
+        android:id="@+id/weather_fragment"
+        android:name="com.raed.weatherapp.ui.WeatherFragment" />
 </navigation>

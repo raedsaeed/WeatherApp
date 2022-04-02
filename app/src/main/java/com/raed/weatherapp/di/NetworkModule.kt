@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit
 @InstallIn(SingletonComponent::class)
 class NetworkModule {
     companion object {
-        const val baseUrl = "https://openweathermap.org"
+        const val baseUrl = "http://api.openweathermap.org/data/2.5/"
     }
 
     @Provides

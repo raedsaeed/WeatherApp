@@ -22,6 +22,7 @@
             android:id="@+id/tv_item_city_name"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:background="?attr/selectableItemBackground"
             android:gravity="start|center_vertical"
             android:paddingStart="@dimen/dp8"
             android:paddingEnd="@dimen/dp8"

@@ -1,6 +1,8 @@
 package com.raed.weatherapp.model
 
 
+import android.os.Parcel
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 
 data class Main(
@@ -16,4 +18,36 @@ data class Main(
     val tempMax: Double,
     @SerializedName("temp_min")
     val tempMin: Double
-)
+) : Parcelable {
+    constructor(parcel: Parcel) : this(
+        parcel.readDouble(),
+        parcel.readInt(),
+        parcel.readInt(),
+        parcel.readDouble(),
+        parcel.readDouble(),
+        parcel.readDouble()
+    )
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeDouble(feelsLike)
+        parcel.writeInt(humidity)
+        parcel.writeInt(pressure)
+        parcel.writeDouble(temp)
+        parcel.writeDouble(tempMax)
+        parcel.writeDouble(tempMin)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<Main> {
+        override fun createFromParcel(parcel: Parcel): Main {
+            return Main(parcel)
+        }
+
+        override fun newArray(size: Int): Array<Main?> {
+            return arrayOfNulls(size)
+        }
+    }
+}

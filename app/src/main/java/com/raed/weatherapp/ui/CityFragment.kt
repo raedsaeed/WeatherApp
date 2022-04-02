@@ -4,12 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.raed.weatherapp.R
 import com.raed.weatherapp.databinding.FragmentCitiesBinding
+import com.raed.weatherapp.defaultNavOptions
+import com.raed.weatherapp.model.City
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -33,6 +37,22 @@ class CityFragment : Fragment() {
         }
 
         val cityAdapter = CityAdapter()
+        cityAdapter.setOnCityClickListener(object : CityAdapter.OnCityClick {
+            override fun onInfoClick(city: City) {
+                findNavController().graph.findNode(R.id.weather_fragment)?.label = city.getName()
+                findNavController().navigate(
+                    R.id.weather_fragment, bundleOf(
+                        WeatherFragment.CITY_NAME to city
+                    ),
+                    defaultNavOptions
+                )
+            }
+
+            override fun onDetailClick(city: City) {
+
+            }
+        })
+
         binding.rvFragmentCitiesList.layoutManager = LinearLayoutManager(requireContext())
         binding.rvFragmentCitiesList.adapter = cityAdapter
 

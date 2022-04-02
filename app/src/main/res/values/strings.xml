@@ -3,4 +3,12 @@
     <string name="city_hint">London,UK</string>
     <string name="add_city">Add City</string>
     <string name="cities">Cities</string>
+    <string name="description">Description</string>
+    <string name="temperature">Temprature</string>
+    <string name="humidity">Humidity</string>
+    <string name="windspeed">Windspeed</string>
+    <string name="degree_celsius">%d ºC</string>
+    <string name="humidity_percentage">%d %%</string>
+    <string name="wind_km">%s Km/h</string>
+    <string name="weather_info">Weather information for %1s received on %2s</string>
 </resources>

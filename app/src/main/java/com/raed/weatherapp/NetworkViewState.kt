@@ -6,6 +6,6 @@ package com.raed.weatherapp
  */
 sealed class NetworkViewState {
     object Loading : NetworkViewState()
-    class Success<T>(val item: T) : NetworkViewState() where T : Any
+    class Success<T>(val item: T?) : NetworkViewState() where T : Any
     class Error(val error: Throwable) : NetworkViewState()
 }

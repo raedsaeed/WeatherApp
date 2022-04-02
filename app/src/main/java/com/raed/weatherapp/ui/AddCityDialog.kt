@@ -13,6 +13,7 @@ import com.raed.weatherapp.R
 import com.raed.weatherapp.databinding.DialogAddCityBinding
 import com.raed.weatherapp.model.City
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.*
 
 
 /**
@@ -50,11 +51,13 @@ class AddCityDialog : BottomSheetDialogFragment() {
         if (!binding.etDialogAddCityText.text.isNullOrEmpty()) {
             val data = binding.etDialogAddCityText.text.toString()
             val entities = data.split(",")
-            val city: City = if (entities.size > 1) {
-                City(entities[0].replace(" ", ""), entities[1].replace(" ", ""))
-            } else City(city = data.replace(" ", ""))
+            val city = entities[0].replace(" ", "")
+                .replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
+            val newCity: City = if (entities.size > 1) {
+                City(city, entities[1].replace(" ", ""))
+            } else City(city = city)
 
-            cityViewModel.addNewCity(city)
+            cityViewModel.addNewCity(newCity)
             dismiss()
         } else {
             Toast.makeText(requireContext(), "Add City Name", Toast.LENGTH_SHORT).show()
