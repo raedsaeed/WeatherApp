@@ -32,7 +32,7 @@ data class WeatherResponse(
     val weather: List<WeatherX>? = null,
     @SerializedName("wind")
     val wind: Wind? = null
-) : Parcelable {
+) : BaseObject(), Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString(),
         parcel.readParcelable(Clouds::class.java.classLoader),

@@ -1,9 +1,9 @@
 package com.raed.weatherapp.data.usecase
 
-import com.raed.weatherapp.NetworkViewState
 import com.raed.weatherapp.data.repo.WeatherRepo
 import com.raed.weatherapp.model.City
 import com.raed.weatherapp.model.WeatherResponse
+import com.raed.weatherapp.utils.NetworkViewState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
@@ -26,7 +26,8 @@ class WeatherUseCase @Inject constructor(private val repo: WeatherRepo) : IWeath
     }.flowOn(Dispatchers.IO)
 
     override fun getWeatherInfoList(city: City): Flow<List<WeatherResponse>?> = flow {
-        emit(repo.getWeatherList(city))
+        val savedDate = repo.getWeatherList(city)
+        emit(savedDate)
     }.catch {
         it.printStackTrace()
     }.flowOn(Dispatchers.IO)

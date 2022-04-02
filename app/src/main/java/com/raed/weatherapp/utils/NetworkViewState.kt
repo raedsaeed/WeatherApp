@@ -1,4 +1,4 @@
-package com.raed.weatherapp
+package com.raed.weatherapp.utils
 
 
 /**

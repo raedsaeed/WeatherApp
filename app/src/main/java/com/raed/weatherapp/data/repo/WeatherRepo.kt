@@ -21,11 +21,12 @@ class WeatherRepo @Inject constructor(
         val response = api.getWeatherInfo(city.getName(), BuildConfig.API_KEY)
         val id = response.id
         val cityWeather = dao.getCity(id)
-        cityWeather?.let {
-            val weatherList = it.weather?.toMutableList()
+        cityWeather?.apply {
+            val weatherList = weather?.toMutableList()
             if (weatherList?.last()?.dt != response.dt) {
                 weatherList?.add(response)
-                dao.insertCity(it)
+                weather = weatherList
+                dao.insertCity(this)
             }
         } ?: run {
             val newCity = CityWeather(
@@ -40,7 +41,7 @@ class WeatherRepo @Inject constructor(
         return response
     }
 
-    suspend fun getWeatherList(city: City): List<WeatherResponse>? {
-        return dao.getCity(city.city).weather
+    suspend fun getWeatherList(city: City): List<WeatherResponse> {
+        return dao.getCity(city.city).weather ?: emptyList()
     }
 }

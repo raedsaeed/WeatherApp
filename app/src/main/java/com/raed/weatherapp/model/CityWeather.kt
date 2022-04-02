@@ -19,5 +19,5 @@ data class CityWeather(
     @NonNull
     val country: String? = "",
 
-    val weather: List<WeatherResponse>? = null
+    var weather: List<WeatherResponse>? = emptyList()
 )

@@ -9,15 +9,14 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
-import com.raed.weatherapp.NetworkViewState
 import com.raed.weatherapp.R
 import com.raed.weatherapp.databinding.FragmentWeatherDetailBinding
+import com.raed.weatherapp.getTime
 import com.raed.weatherapp.model.City
 import com.raed.weatherapp.model.WeatherResponse
+import com.raed.weatherapp.utils.NetworkViewState
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.DecimalFormat
-import java.text.SimpleDateFormat
-import java.util.*
 
 
 /**
@@ -41,17 +40,21 @@ class WeatherFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentWeatherDetailBinding.inflate(inflater, container, false)
-        arguments?.getParcelable<City>(CITY_NAME)?.let {
-            fetchWeatherDetails(it)
-        }
+        return binding.root
+    }
 
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         arguments?.getParcelable<WeatherResponse>(WEATHER)?.let {
             populateUI(it)
         }
 
-        weatherViewModel.weatherLiveData.observe(viewLifecycleOwner) { populateUI(it) }
+        arguments?.getParcelable<City>(CITY_NAME)?.let {
+            fetchWeatherDetails(it)
+        }
 
-        return binding.root
+        weatherViewModel.weatherLiveData.observe(viewLifecycleOwner) { populateUI(it) }
     }
 
     private fun fetchWeatherDetails(city: City) {
@@ -83,13 +86,11 @@ class WeatherFragment : Fragment() {
     }
 
     private fun populateUI(weather: WeatherResponse?) {
+        binding.cvFragmentWeatherDetailCard.isVisible = weather != null
+        binding.pbFragmentWeatherDetailsLoading.isVisible = weather == null
+
         weather?.let {
             val cityName = "${it.name}, ${it.sys?.country}"
-            val time =
-                SimpleDateFormat(
-                    "dd.MM.yyyy - hh:mm",
-                    Locale.getDefault()
-                ).format(Date(it.dt * 1000L))
 
             Glide.with(this)
                 .load("${IMAGE_URL}${it.weather?.get(0)?.icon}.png")
@@ -98,14 +99,15 @@ class WeatherFragment : Fragment() {
             binding.tvFragmentWeatherCity.text = cityName
             binding.tvFragmentWeatherDesc.text = it.weather?.get(0)?.description
             binding.tvFragmentWeatherTemp.text =
-                getString(R.string.degree_celsius, ((it.main?.temp ?: 0 - 273.15).toInt()))
+                getString(R.string.degree_celsius, (it.main?.temp!! - 273.15).toInt())
             binding.tvFragmentWeatherHum.text =
-                getString(R.string.humidity_percentage, it.main?.humidity)
+                getString(R.string.humidity_percentage, it.main.humidity)
             binding.tvFragmentWeatherWind.text = getString(
                 R.string.wind_km,
                 DecimalFormat("#.#").format(it.wind?.speed)
             )
-            binding.tvFragmentWeatherMessage.text = getString(R.string.weather_info, cityName, time)
+            binding.tvFragmentWeatherMessage.text =
+                getString(R.string.weather_info, cityName, it.dt.getTime())
         }
     }
 }

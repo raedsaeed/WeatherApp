@@ -13,7 +13,7 @@ data class Main(
     @SerializedName("pressure")
     val pressure: Int,
     @SerializedName("temp")
-    val temp: Double,
+    var temp: Double = 0.0,
     @SerializedName("temp_max")
     val tempMax: Double,
     @SerializedName("temp_min")

@@ -49,7 +49,14 @@ class CityFragment : Fragment() {
             }
 
             override fun onDetailClick(city: City) {
-
+                findNavController().graph.findNode(R.id.weather_history_fragment)?.label =
+                    getString(R.string.historical_title, city.city)
+                findNavController().navigate(
+                    R.id.weather_history_fragment, bundleOf(
+                        HistoricalWeatherFragment.CITY to city
+                    ),
+                    defaultNavOptions
+                )
             }
         })
 

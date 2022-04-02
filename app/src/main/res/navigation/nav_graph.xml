@@ -12,4 +12,8 @@
     <fragment
         android:id="@+id/weather_fragment"
         android:name="com.raed.weatherapp.ui.WeatherFragment" />
+
+    <fragment
+        android:id="@+id/weather_history_fragment"
+        android:name="com.raed.weatherapp.ui.HistoricalWeatherFragment" />
 </navigation>

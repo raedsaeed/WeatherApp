@@ -1,11 +1,12 @@
 package com.raed.weatherapp.ui
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.raed.weatherapp.NetworkViewState
 import com.raed.weatherapp.data.usecase.IWeatherUseCase
 import com.raed.weatherapp.model.City
+import com.raed.weatherapp.utils.NetworkViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -17,12 +18,12 @@ import javax.inject.Inject
 @HiltViewModel
 class WeatherViewModel @Inject constructor(private val useCase: IWeatherUseCase) : ViewModel() {
     private val weatherMutableData = MutableLiveData<NetworkViewState>()
-    val weatherLiveData = weatherMutableData
+    val weatherLiveData: LiveData<NetworkViewState> = weatherMutableData
 
     fun getWeatherInfo(city: City) {
         viewModelScope.launch {
             useCase.getWeatherInfo(city).collect {
-                weatherLiveData.postValue(it)
+                weatherMutableData.postValue(it)
             }
         }
     }
@@ -30,7 +31,7 @@ class WeatherViewModel @Inject constructor(private val useCase: IWeatherUseCase)
     fun getHistoricalWeatherInfo(city: City) {
         viewModelScope.launch {
             useCase.getWeatherInfoList(city).collect {
-                weatherLiveData.postValue(NetworkViewState.Success(it))
+                weatherMutableData.postValue(NetworkViewState.Success(it))
             }
         }
     }

@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
-import com.raed.weatherapp.AbstractViewHolder
 import com.raed.weatherapp.R
 import com.raed.weatherapp.databinding.ItemCityBinding
+import com.raed.weatherapp.model.AbstractViewHolder
 import com.raed.weatherapp.model.BaseObject
 import com.raed.weatherapp.model.City
 
@@ -70,6 +70,7 @@ class CityAdapter : RecyclerView.Adapter<AbstractViewHolder<BaseObject>>() {
         init {
             binding.ivItemCityIcon.setOnClickListener(this)
             binding.ivItemCityInfo.setOnClickListener(this)
+            binding.tvItemCityName.setOnClickListener(this)
         }
 
         override fun bind(item: BaseObject) {
