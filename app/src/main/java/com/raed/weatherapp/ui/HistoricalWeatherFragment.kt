@@ -11,11 +11,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.raed.weatherapp.R
 import com.raed.weatherapp.databinding.FragmentWeatherHistoryBinding
-import com.raed.weatherapp.defaultNavOptions
 import com.raed.weatherapp.model.BaseObject
 import com.raed.weatherapp.model.City
 import com.raed.weatherapp.ui.WeatherFragment.Companion.WEATHER
 import com.raed.weatherapp.utils.NetworkViewState
+import com.raed.weatherapp.utils.defaultNavOptions
 import dagger.hilt.android.AndroidEntryPoint
 
 

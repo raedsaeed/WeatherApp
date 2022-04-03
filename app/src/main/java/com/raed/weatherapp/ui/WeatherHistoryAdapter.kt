@@ -10,10 +10,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.raed.weatherapp.R
 import com.raed.weatherapp.databinding.ItemWeatherHistoryBinding
-import com.raed.weatherapp.getTime
 import com.raed.weatherapp.model.AbstractViewHolder
 import com.raed.weatherapp.model.BaseObject
 import com.raed.weatherapp.model.WeatherResponse
+import com.raed.weatherapp.utils.getTime
 
 
 /**

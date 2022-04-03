@@ -1,6 +1,7 @@
-package com.raed.weatherapp
+package com.raed.weatherapp.utils
 
 import androidx.navigation.navOptions
+import com.raed.weatherapp.R
 import java.text.SimpleDateFormat
 import java.util.*
 

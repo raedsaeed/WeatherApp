@@ -12,8 +12,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.raed.weatherapp.R
 import com.raed.weatherapp.databinding.FragmentCitiesBinding
-import com.raed.weatherapp.defaultNavOptions
 import com.raed.weatherapp.model.City
+import com.raed.weatherapp.utils.defaultNavOptions
 import dagger.hilt.android.AndroidEntryPoint
 
 

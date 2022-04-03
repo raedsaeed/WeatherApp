@@ -11,10 +11,10 @@ import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import com.raed.weatherapp.R
 import com.raed.weatherapp.databinding.FragmentWeatherDetailBinding
-import com.raed.weatherapp.getTime
 import com.raed.weatherapp.model.City
 import com.raed.weatherapp.model.WeatherResponse
 import com.raed.weatherapp.utils.NetworkViewState
+import com.raed.weatherapp.utils.getTime
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.DecimalFormat
 
